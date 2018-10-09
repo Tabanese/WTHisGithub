@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Joint Exploration of Static Sites and Verison Control Project</title>
 	<style> aside {color:cornsilk} </style>
+	<script src="brython.js"></script>
 </head>
 
-	<body>
+	<body onload="brython()">
 		<header>
 			<h1>This site is to explore version control</h1>
 			<aside>And fight over final design.</aside>
@@ -35,7 +36,20 @@
 			Namespaces are one honking great idea -- let's do more of those!<br>
 			<br>
             - <strong>The Zen of Python</strong>
-		</blockquote
+		</blockquote>
+	
+		<script type="text/python">
+			from browser import document, alert
+
+			# Bind event 'click' on button to function echo
+
+			def echo(ev):
+				alert(document["zone"].value)
+
+			document["mybutton"].bind("click", echo)
+		</script>
+		<input id="zone">
+		<button id="mybutton">click !</button>
 	
 	</body>
 </html>
