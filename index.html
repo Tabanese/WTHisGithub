@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Joint Exploration of Static Sites and Verison Control Project</title>
-	<style> aside {color:cornsilk} </style>
+	<style> 
+		aside {color:cornsilk;}
+	</style>
 	<script src="./Brykeeper/brython.js"></script>
 </head>
 
@@ -39,17 +41,14 @@
 		</blockquote>
 	
 		<script type="text/python">
-			from browser import document, alert
-
-			# Bind event 'click' on button to function echo
-
-			def echo(ev):
-				alert(document["zone"].value)
-
-			document["mybutton"].bind("click", echo)
+			from browser import document as doc
+			
+			def counterclick(ev):
+				pycount = int(doc["counter"].text)+1
+				doc["counter"].text = pycount
+			
+			doc["counter"].bind("click",counterclick)
 		</script>
-		<input id="zone">
-		<button id="mybutton">click !</button>
-	
+		<center><h1 id="counter">0</h1></center>
 	</body>
 </html>
