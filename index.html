@@ -18,7 +18,6 @@
 				border-radius:4px;
 				cursor:pointer;
 				}
-		#counter {cursor:none;}
 	</style>
 	<script src="./Brykeeper/brython.js"></script>
 </head>
@@ -50,7 +49,19 @@
 			<aside>And fight over final design.</aside>
 		</header>
 	
-		<blockquote cite="https://www.python.org/dev/peps/pep-0020/">
+		<script type="text/python">
+			from browser import document as doc
+			
+			def quoteclick(ev):
+				colorlist = {'red':'green','green':'blue','blue':'yellow','yellow':'pink','pink':'black','black':'red'}
+				colorchoice = colorlist[doc["quote"].style.color]
+				doc["quote"].style.color = colorchoice
+			
+			doc["quote"].bind("click",quoteclick)
+			doc["quote"].style.color = 'black'
+		</script>
+
+		<blockquote id="quote" cite="https://www.python.org/dev/peps/pep-0020/">
 			Beautiful is better than ugly.<br>
 			Explicit is better than implicit.<br>
 			Simple is better than complex.<br>
