@@ -6,12 +6,44 @@
     <title>Joint Exploration of Static Sites and Verison Control Project</title>
 	<style> 
 		aside {color:cornsilk;}
-		blockquote {background-color:black;}
+		body {
+				background-color:white;
+				color:black;
+				}
+		#nightmode {
+				float:right;
+				background-color:green;
+				border: none;
+				color:white;
+				border-radius:4px;
+				cursor:pointer;
+				}
 	</style>
 	<script src="./Brykeeper/brython.js"></script>
 </head>
 
-	<body onload="brython()"> <!-- this must be loaded in order to use Brython on the site. -->
+	<body id="page" onload="brython()"> <!-- this must be loaded in order to use Brython on the site. -->
+		
+		<script type="text/python">
+			from browser import document as doc
+			
+			def nightmodeclick(ev):
+				if doc["nightmode"].text == "Nightmode: Off":
+					doc["nightmode"].text = "Nightmode: On"
+					doc["page"].style.color = 'white'
+					doc["page"].style.background = 'black'
+				else:
+					doc["nightmode"].text = "Nightmode: Off"
+					doc["page"].style.color = 'black'
+					doc["page"].style.background = 'white'
+			
+			doc["nightmode"].bind("click",nightmodeclick)
+		</script>
+	
+		<button id='nightmode'>
+			Nightmode: Off
+		</button>
+		
 		<header>
 			<h1>This site is to explore version control</h1>
 			<aside>And fight over final design.</aside>
@@ -40,8 +72,7 @@
 			<br>
             - <strong>The Zen of Python</strong>
 		</blockquote>
-	
-	
+		
 		<script type="text/python">
 			from browser import document as doc
 			
