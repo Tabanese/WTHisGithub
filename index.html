@@ -18,6 +18,7 @@
 				border-radius:4px;
 				cursor:pointer;
 				}
+		#counter {cursor:none;}
 	</style>
 	<script src="./Brykeeper/brython.js"></script>
 </head>
@@ -53,7 +54,10 @@
 			from browser import document as doc
 			
 			def quoteclick(ev):
-				colorlist = {'red':'green','green':'blue','blue':'yellow','yellow':'pink','pink':'black','black':'red'}
+				if doc["nightmode"].text == "Nightmode: On":
+					colorlist = {'red':'green','green':'blue','blue':'yellow','yellow':'pink','pink':'white','white':'red','black':'white'}
+				else:
+					colorlist = {'red':'green','green':'blue','blue':'yellow','yellow':'pink','pink':'black','black':'red','white':'black'}
 				colorchoice = colorlist[doc["quote"].style.color]
 				doc["quote"].style.color = colorchoice
 			
