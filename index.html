@@ -6,11 +6,12 @@
     <title>Joint Exploration of Static Sites and Verison Control Project</title>
 	<style> 
 		aside {color:cornsilk;}
+		body.background {color:black;}
 	</style>
 	<script src="./Brykeeper/brython.js"></script>
 </head>
 
-	<body onload="brython()">
+	<body onload="brython()"> <!-- this must be loaded in order to use Brython on the site. -->
 		<header>
 			<h1>This site is to explore version control</h1>
 			<aside>And fight over final design.</aside>
@@ -40,12 +41,13 @@
             - <strong>The Zen of Python</strong>
 		</blockquote>
 	
+	
 		<script type="text/python">
 			from browser import document as doc
 			
 			def counterclick(ev):
-				pycount = int(doc["counter"].text)+1
-				doc["counter"].text = pycount
+				pycounter = int(doc["counter"].text)+1
+				doc["counter"].text = pycounter
 			
 			doc["counter"].bind("click",counterclick)
 		</script>
